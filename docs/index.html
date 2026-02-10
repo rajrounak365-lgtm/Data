@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Special Journey for You ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff7eb3;
+      --secondary: #ff758c;
+      --accent: #b83280;
+      --glass: rgba(255, 255, 255, 0.25);
+      --glass-border: rgba(255, 255, 255, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      color: #4a4a4a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      position: absolute;
+      width: 90%;
+      max-width: 550px;
+      padding: 40px;
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    section.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+      visibility: visible;
+    }
+
+    section.exit {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.9);
+    }
+
+    h1, h2 {
+      font-family: 'Dancing Script', cursive;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(184, 50, 128, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 25px rgba(184, 50, 128, 0.4);
+      background: #9b246c;
+    }
+
+    .btn-no {
+      background: #8e8e8e;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .btn-no:hover {
+        background: #6e6e6e;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .floating-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10%;
+      animation: floatUp linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.4; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #no-emoji {
+        position: absolute;
+        font-size: 2rem;
+        display: none;
+        pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-elements" id="bg-elements"></div>
+  <div id="no-emoji">😜</div>
+
+  <div class="container">
+    <section class="active" id="s1">
+      <h1>Hey Vaishnavi (Bhaijaan) 🌸</h1>
+      <p>This isn't just a web page. It's a small space I built specifically for you.</p>
+      <button class="btn" onclick="nextSection(1)">Begin the Journey ✨</button>
+    </section>
+
+    <section id="s2">
+      <h2>A Gentle Truth 💫</h2>
+      <p>Some people enter our lives quietly, but soon become the brightest part of our day.</p>
+      <button class="btn" onclick="nextSection(2)">Keep Going 💖</button>
+    </section>
+
+    <section id="s3">
+      <h2>What I See in You 🌷</h2>
+      <p>I appreciate your kindness. You have a way of making ordinary moments feel memorable.</p>
+      <button class="btn" onclick="nextSection(3)">Almost There 🌈</button>
+    </section>
+
+    <section id="s4">
+      <h2>A Heartfelt Question 🤍</h2>
+      <p>Life is simply better when shared with people who genuinely understand us.</p>
+      <h1 class="pulse">Will you be my friend? 🌟</h1>
+      <div class="btn-group">
+        <button class="btn" onclick="nextSection(4)">Yes! 🥰</button>
+        <button class="btn btn-no" id="runaway-btn" onmouseover="moveButton()" onclick="moveButton()">No 😶</button>
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2>Yay! Best Choice Ever! 🎉</h2>
+      <p>My heart is so happy right now! I promise to be the best friend you've ever had.</p>
+      <h1>✨ To Many Adventures Together! ✨</h1>
+      <button class="btn" onclick="location.reload()">See it Again? 🔄</button>
+    </section>
+  </div>
+
+  <script>
+    function nextSection(step) {
+      const current = document.getElementById(`s${step}`);
+      const next = document.getElementById(`s${step + 1}`);
+      if (next) {
+        current.classList.remove('active');
+        current.classList.add('exit');
+        setTimeout(() => { next.classList.add('active'); }, 400);
+      }
+    }
+
+    function moveButton() {
+      const btn = document.getElementById('runaway-btn');
+      const emoji = document.getElementById('no-emoji');
+      
+      // Show emoji where the button was
+      const rect = btn.getBoundingClientRect();
+      emoji.style.left = rect.left + 'px';
+      emoji.style.top = rect.top + 'px';
+      emoji.style.display = 'block';
+      
+      // Move button to a random spot
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      
+      btn.style.position = 'fixed';
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+
+      // Hide emoji after a bit
+      setTimeout(() => { emoji.style.display = 'none'; }, 1000);
+      
+      // Change emoji randomly
+      const emojis = ['😜', '🙈', '🤏', '❌', '🤷‍♂️', '😂'];
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    }
+
+    const container = document.getElementById('bg-elements');
+    const symbols = ['❤', '🌸', '✨', '💖'];
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('heart');
+      particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      const duration = 5 + Math.random() * 5;
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.fontSize = (15 + Math.random() * 20) + 'px';
+      particle.style.animationDuration = duration + 's';
+      container.appendChild(particle);
+      setTimeout(() => { particle.remove(); }, duration * 1000);
+    }
+
+    setInterval(createParticle, 600);
+  </script>
+</body>
+  </html>
